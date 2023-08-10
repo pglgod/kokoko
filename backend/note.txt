@@ -1,0 +1,6 @@
+
+pglgod
+pglgod
+
+
+mongodb+srv://pglgod:<password>@users.a5ocftk.mongodb.net/?retryWrites=true&w=majority

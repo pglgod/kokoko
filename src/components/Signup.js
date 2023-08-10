@@ -19,7 +19,7 @@ export default function Signup() {
 
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e ) => {
         e.preventDefault();
 
         const formData = new FormData();
@@ -27,20 +27,31 @@ export default function Signup() {
 
         const url = "http://localhost:5000/upload-image"
 
-        const responce = await axios.post(url, formData, {
-            headers: { "Content-Type": "multipart/form-data" }
+        // const responce = await axios.post(url, formData, 
+        //     { headers: { "Content-Type": "multipart/form-data" } }
+        // )
+        // console.log(responce)
+
+
+        fetch(url, { method: "POST", body: formData }).then((res)=>{
+            console.log(res)
         })
 
-        console.log(responce)
     }
 
 
     const getImages = async () => {
 
-        const responce = await axios.get("http://localhost:5000/get-image/");
-        setAllImg(responce.data.data)
+        // const responce = await axios.get("http://localhost:5000/get-image/");
+        // setAllImg(responce.data.data)
+        // console.log(allImg)
 
-        console.log(allImg)
+        fetch("http://localhost:5000/get-image/", { method:"GET" } ).then((res)=>{
+            return res.json();
+        }).then((resp)=>{
+            setAllImg(resp.data)
+            console.log(allImg)
+        })
 
     }
 
@@ -62,7 +73,7 @@ export default function Signup() {
             <div className="container d-flex gap-5">
 
                 {
-                    allImg?.map((element) => {
+                allImg?.map((element) => {
                         return <div className="card" style={{ width: "18rem" }} key={element._id} >
                                 <img src={require(`../uploads/images/${element.image}`)} className="card-img-top" alt="..." />
                                 <div className="card-body">

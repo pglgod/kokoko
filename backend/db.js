@@ -2,7 +2,11 @@
 
 const mongoose = require('mongoose');
 
-const mongoURI = "mongodb+srv://pglgod:pglgod@users.a5ocftk.mongodb.net/?retryWrites=true&w=majority"
+require('dotenv').config();
+
+
+
+mongoURI = process.env.MONGO_URI;
 
 const connectToMongo = ()=>{
     mongoose.connect(mongoURI).then(()=>{

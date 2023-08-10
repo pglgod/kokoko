@@ -10,7 +10,7 @@ export default function Signup() {
     const [image, setImage] = useState()
     const [allImg, setAllImg] = useState();
 
-    const uploadImg = (e) => {
+    const uploadImg = (e)=>{
         setImage(e.target.files[0])
     }
 
